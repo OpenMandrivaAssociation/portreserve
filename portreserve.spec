@@ -13,6 +13,7 @@ Patch1:		portreserve-0.0.0-socket_dir.diff
 Patch2:		portreserve-antibork.diff
 Requires(pre): rpm-helper
 Requires(postun): rpm-helper
+BuildRoot:	%{_tmppath}/%{name}-%{version}-buildroot
 
 %description
 The portreserve program aims to help services with well-known ports that lie in
