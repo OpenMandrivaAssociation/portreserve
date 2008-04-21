@@ -1,7 +1,7 @@
 Summary:	TCP port reservation utility
 Name:		portreserve
 Version:	0.0.0
-Release:	%mkrel 2
+Release:	%mkrel 3
 License:	GPL
 Group:		System/Base
 URL:		http://cyberelk.net/tim/portreserve/
@@ -13,7 +13,7 @@ Patch1:		portreserve-0.0.0-socket_dir.diff
 Patch2:		portreserve-antibork.diff
 Requires(pre): rpm-helper
 Requires(postun): rpm-helper
-BuildRoot:	%{_tmppath}/%{name}-%{version}-buildroot
+BuildRoot:	%{_tmppath}/%{name}-%{version}-%{release}-buildroot
 
 %description
 The portreserve program aims to help services with well-known ports that lie in
