@@ -43,7 +43,7 @@ rm -rf %{buildroot}
 
 install -d %{buildroot}%{_initrddir}
 install -d %{buildroot}%{_sysconfdir}/%{name}
-install -d %{buildroot}%{_localstatedir}/%{name}
+install -d %{buildroot}%{_localstatedir}/lib/%{name}
 install -d %{buildroot}%{_mandir}/man1
 
 %makeinstall_std
@@ -70,7 +70,7 @@ rm -rf %{buildroot}
 %files
 %defattr(-,root,root)
 %doc AUTHORS COPYING ChangeLog NEWS README debian/README.Debian debian/changelog
-%dir %attr(0711,root,root) %{_localstatedir}/%{name}
+%dir %attr(0711,root,root) %{_localstatedir}/lib/%{name}
 %dir %attr(0711,root,root) %{_sysconfdir}/%{name}
 %attr(0755,root,root) %{_initrddir}/%{name}
 %attr(0755,root,root) /sbin/*
