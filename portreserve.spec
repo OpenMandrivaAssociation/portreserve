@@ -1,14 +1,13 @@
 Summary:	TCP port reservation utility
 Name:		portreserve
-Version:	0.0.0
-Release:	%mkrel 3
+Version:	0.0.2
+Release:	%mkrel 1
 License:	GPL
 Group:		System/Base
 URL:		http://cyberelk.net/tim/portreserve/
 Source0:	http://cyberelk.net/tim/data/portreserve/stable/%{name}-%{version}.tar.bz2
 Source1:	portreserve.init
 Source2:	portreserve-man_pages.tar.gz
-Patch0:		portreserve_0.0.0-4.diff
 Patch1:		portreserve-0.0.0-socket_dir.diff
 Patch2:		portreserve-antibork.diff
 Requires(pre): rpm-helper
@@ -24,7 +23,6 @@ the init script).
 %prep
 
 %setup -q -a2
-%patch0 -p1 -b .debian
 %patch1 -p1 -b .socket_dir
 %patch2 -p0 -b .antibork
 
@@ -69,7 +67,7 @@ rm -rf %{buildroot}
 
 %files
 %defattr(-,root,root)
-%doc AUTHORS COPYING ChangeLog NEWS README debian/README.Debian debian/changelog
+%doc AUTHORS COPYING ChangeLog NEWS README
 %dir %attr(0711,root,root) %{_localstatedir}/lib/%{name}
 %dir %attr(0711,root,root) %{_sysconfdir}/%{name}
 %attr(0755,root,root) %{_initrddir}/%{name}
