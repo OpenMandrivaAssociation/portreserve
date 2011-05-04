@@ -1,7 +1,7 @@
 Summary:	TCP port reservation utility
 Name:		portreserve
 Version:	0.0.4
-Release:	%mkrel 4
+Release:	%mkrel 5
 License:	GPL
 Group:		System/Base
 URL:		http://cyberelk.net/tim/portreserve/
