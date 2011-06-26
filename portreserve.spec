@@ -1,12 +1,13 @@
 Summary:	TCP port reservation utility
 Name:		portreserve
-Version:	0.0.4
-Release:	%mkrel 5
+Version:	0.0.5
+Release:	%mkrel 1
 License:	GPL
 Group:		System/Base
 URL:		http://cyberelk.net/tim/portreserve/
 Source0:	http://cyberelk.net/tim/data/portreserve/stable/%{name}-%{version}.tar.bz2
-Source1:	portreserve.init
+Source1:	http://cyberelk.net/tim/data/portreserve/stable/%{name}-%{version}.tar.bz2.sig
+Source2:	portreserve.init
 Patch1:		portreserve-0.0.0-socket_dir.diff
 Requires(pre): rpm-helper
 Requires(postun): rpm-helper
@@ -24,7 +25,7 @@ the init script).
 %setup -q
 %patch1 -p1 -b .socket_dir
 
-cp %{SOURCE1} portreserve-mandriva.init
+cp %{SOURCE2} portreserve-mandriva.init
 
 %build
 autoreconf
