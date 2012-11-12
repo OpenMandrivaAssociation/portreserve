@@ -1,0 +1,24 @@
+diff -Naur portreserve-0.0.0/doc/portreserve.xml portreserve-0.0.0.oden/doc/portreserve.xml
+--- portreserve-0.0.0/doc/portreserve.xml	2003-09-03 16:12:51.000000000 +0200
++++ portreserve-0.0.0.oden/doc/portreserve.xml	2006-07-30 15:27:48.000000000 +0200
+@@ -87,7 +87,7 @@
+ 
+ 	<varlistentry>
+ 	  <term><filename
+-	    path="/var/run/portreserve/socket">/var/run/portreserve/socket</filename></term>
++	    path="/var/lib/portreserve/portreserve.sock">/var/lib/portreserve/portreserve.sock</filename></term>
+ 	  <listitem>
+ 	    <simpara>communication socket for
+ 	      <command>portrelease</command></simpara>
+diff -Naur portreserve-0.0.0/src/portreserve.c portreserve-0.0.0.oden/src/portreserve.c
+--- portreserve-0.0.0/src/portreserve.c	2006-07-30 15:28:40.000000000 +0200
++++ portreserve-0.0.0.oden/src/portreserve.c	2006-07-30 15:28:28.000000000 +0200
+@@ -69,7 +69,7 @@
+ #include <sys/stat.h>
+ #include <fcntl.h>
+ 
+-#define UNIX_SOCKET "/var/run/portreserve/socket"
++#define UNIX_SOCKET "/var/lib/portreserve/portreserve.sock"
+ #define PIDFILE "/var/run/portreserve.pid"
+ 
+ struct map {
