@@ -1,0 +1,60 @@
+#!/bin/sh
+#
+# portreserve  This script starts and stops the TCP port reserver
+#
+# chkconfig: 2345 9 89
+#
+# description: portreserve is a TCP port reservation utility.
+### BEGIN INIT INFO
+# Provides:          portreserve
+# Default-Start:     2 3 4 5
+# Default-Stop:      0 6
+# Short-Description: Port reservation utility
+# Description:       Portreserve is a TCP port reservation utility
+#                    that can be use to prevent RPC services from 
+#                    picking up well-known reserved ports.
+### END INIT INFO
+
+# Source function library.
+. /etc/rc.d/init.d/functions
+
+# Source networking configuration.
+. /etc/sysconfig/network
+
+# Check that networking is enabled.
+[ ${NETWORKING} = "no" ] && exit 0
+
+prog=portreserve
+
+# See how we were called.
+case "$1" in
+  start)
+	# Start daemon.
+	echo -n $"Starting $prog: "
+	daemon portreserve
+	RETVAL=$?
+        echo
+        [ $RETVAL = 0 ] && touch /var/lock/subsys/portreserve
+        ;;
+  stop)
+        # Stop daemon.
+        action "Stopping $prog: " portrelease '*'
+        RETVAL=$?
+        [ $RETVAL = 0 ] && rm -f /var/lock/subsys/portreserve /var/lib/portreserve/portreserve.sock
+        ;;
+  restart|reload)
+        $0 stop
+        $0 start
+        ;;
+  condrestart)
+       [ -e /var/lock/subsys/portreserve ] && $0 restart
+       ;;
+  status)
+	status portreserve
+	;;
+  *)
+	echo "Usage: $0 {start|stop|restart|reload|status|condrestart}"
+	exit 1
+esac
+
+exit 0
