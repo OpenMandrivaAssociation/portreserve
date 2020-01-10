@@ -22,7 +22,7 @@ the init script).
 
 %prep
 %setup -q
-%apply_patches
+%autopatch -p1
 
 cp %{SOURCE2} portreserve-mandriva.init
 autoreconf
