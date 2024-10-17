@@ -4,7 +4,7 @@ Version:	0.0.5
 Release:	15
 License:	GPLv2
 Group:		System/Base
-Url:		http://cyberelk.net/tim/portreserve/
+Url:		https://cyberelk.net/tim/portreserve/
 Source0:	http://cyberelk.net/tim/data/portreserve/stable/%{name}-%{version}.tar.bz2
 Source1:	http://cyberelk.net/tim/data/portreserve/stable/%{name}-%{version}.tar.bz2.sig
 Source2:	portreserve.service
