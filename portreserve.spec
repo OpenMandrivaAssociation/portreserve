@@ -10,7 +10,6 @@ Source1:	http://cyberelk.net/tim/data/portreserve/stable/%{name}-%{version}.tar.
 Source2:	portreserve.service
 Patch0:		portreserve-pid-file.patch
 Patch1:		portreserve-0.0.0-socket_dir.diff
-Requires(pre,postun):	rpm-helper
 BuildRequires:	docbook-style-xsl
 BuildRequires:	xmlto
 
@@ -21,17 +20,15 @@ it itself, until the real service tells it to release the port (generally in
 the init script).
 
 %prep
-%setup -q
-%autopatch -p1
-
+%autosetup -p1
 cp %{SOURCE2} portreserve-mandriva.init
 autoreconf
 
 %build
-%configure2_5x \
+%configure \
 	--sbindir=/sbin
 
-%make
+%make_build
 
 %install
 install -d %{buildroot}%{_initrddir}
@@ -39,16 +36,10 @@ install -d %{buildroot}%{_sysconfdir}/%{name}
 install -d %{buildroot}%{_localstatedir}/lib/%{name}
 install -d %{buildroot}%{_mandir}/man1
 
-%makeinstall_std
+%make_install
 install -m644 %{SOURCE2} -D %{buildroot}%{_unitdir}/%{name}.service
 install -m0644 doc/portrelease.1 %{buildroot}%{_mandir}/man1/
 install -m0644 doc/portreserve.1 %{buildroot}%{_mandir}/man1/
-
-%preun
-%_preun_service %{name}
-
-%post
-%_post_service %{name}
 
 %files
 %doc AUTHORS COPYING ChangeLog NEWS README
