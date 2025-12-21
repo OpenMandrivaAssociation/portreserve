@@ -10,6 +10,11 @@ Source1:	http://cyberelk.net/tim/data/portreserve/stable/%{name}-%{version}.tar.
 Source2:	portreserve.service
 Patch0:		portreserve-pid-file.patch
 Patch1:		portreserve-0.0.0-socket_dir.diff
+BuildRequires:	autoconf
+BuildRequires:	automake
+BuildRequires:	libtool-base
+BuildRequires:	slibtool
+BuildRequires:	make
 BuildRequires:	docbook-style-xsl
 BuildRequires:	xmlto
 
